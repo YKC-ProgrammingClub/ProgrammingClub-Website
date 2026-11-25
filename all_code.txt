@@ -1,0 +1,1033 @@
+==================== ./all_code.txt ====================
+
+==================== ./contributing.md ====================
+# Contributing to Programming Club Website
+Welcome! Whether this is your first time using Git or you already code regularly, here is how we work together:
+
+1. Read `documentation/development-docs/gitworkflow.md`, `commitconventions.md`, and `codingstandards.md`.
+2. Pick an assigned task or GitHub Issue (or ask if you need a task).
+3. Create a branch from `main` **(never push directly to `main`)**.
+4. Make small, focused commits using our commit message format.
+5. Open a Pull Request on GitHub when your task is ready for review.
+
+If you get stuck with Git, CSS, or JS, ask in the club chat or open an issue. Don't stay stuck for hours alone.
+==================== ./documentation/development-docs/coding_standards.md ====================
+# Coding Standards
+
+## General
+- Use **2 spaces** for indentation (matching `.editorconfig`).
+- Use clear, descriptive names in `kebab-case` for files and CSS classes, and `camelCase` for JS variables and functions.
+- Keep changes scoped to your assigned files/task so you don't overwrite someone else's work.
+
+## HTML
+- Use semantic elements (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`, `<button>`).
+- Include `alt` text on images (`alt=""` only for purely decorative images).
+- Avoid inline styles (`style="..."`) unless strictly dynamic.
+
+## CSS
+- Reuse shared CSS variables and layout classes before writing duplicate rules.
+- Test layouts at both desktop and mobile widths (avoid fixed widths that cause horizontal overflow).
+
+## JavaScript
+- Write clean, readable ES6+ (`const` by default, `let` when reassigned, avoid `var`).
+- Never put private keys, passwords, or email credentials in client-side code.
+- Handle empty/missing data gracefully so the page doesn't break.
+==================== ./documentation/development-docs/commit_conventions.md ====================
+# Commit Conventions
+
+Use the format:
+`<type>: <short description in lowercase imperative/present tense>`
+
+## Allowed Types
+- `feat:` — new feature or section
+- `fix:` — bug fix
+- `style:` — CSS, formatting, or visual styling (not logic)
+- `docs:` — documentation or copy/content updates
+- `refactor:` — restructuring code without changing behavior
+- `test:` — tests or verification helpers
+- `chore:` — config, setup, or maintenance tasks
+
+## Examples
+- `feat: add member profile card layout`
+- `fix: align mobile navbar toggle`
+- `style: adjust project card spacing`
+- `docs: add beginner git setup guide`
+- `chore: add editorconfig and gitignore`
+
+Avoid vague messages like `"update"`, `"stuff"`, or `"fix bug"`.
+==================== ./documentation/development-docs/git_workflow.md ====================
+# Git Workflow
+
+## Golden Rule
+**Never push directly to `main`.** All changes go through a branch and a Pull Request (PR).
+
+## Step-by-Step Workflow
+1. **Sync `main`:**
+   in bash shell:
+    git checkout main
+    git pull origin main
+
+2. **Create a branch for your task:**
+    in bash shell:
+     git checkout -b <type>/<short-description>
+
+   Examples:
+   - `git checkout -b feat/project-filter`
+   - `git checkout -b style/faq-layout`
+   - `git checkout -b docs/starter-resources`
+
+3. **Stage and commit your work:**
+    in bash shell:
+     git add .
+     git commit -m "feat: add category filter to project showcase"
+
+
+4. **Push your branch:**
+    in bash shell:
+     git push -u origin <your-branch-name>
+
+
+5. **Open a Pull Request:**
+   - Go to GitHub, open a PR from your branch into `main`, fill out the PR template, and request a review.
+   - After approval and merge, switch back to `main` and run `git pull origin main`.
+
+## Branch Naming
+- `feat/<name>` — new features or sections
+- `fix/<name>` — bug fixes
+- `style/<name>` — CSS/layout/visual updates
+- `docs/<name>` — documentation or text content updates
+- `refactor/<name>` — code cleanup without changing behavior
+==================== ./documentation/project-docs/development_roadmap.md ====================
+# Development Roadmap
+
+## Phase 1: Foundation & Setup
+- Finalize repo structure, `.gitignore`, `.editorconfig`, and core docs.
+- Set up shared header, footer, color/typography variables, and navigation.
+- Walk all members through cloning, branching, committing, and opening a PR.
+
+## Phase 2: Core Content & Layout
+- Build Homepage, FAQ, and Starter Resources & Wiki structure and content.
+- Build Member Directory cards and Project Showcase cards (including `Completed` and `In Progress` status labels).
+
+## Phase 3: Interactivity & Join Form
+- Add JS filtering by category/technology/status on the Project Showcase.
+- Connect the Join Us form to a working email notification endpoint and test validation/error states.
+
+## Phase 4: Polish, QA & Launch
+- Fix layout/responsive bugs across desktop and mobile viewports.
+- Verify all links, images, and member consent items.
+- Publish via GitHub Pages.
+==================== ./documentation/project-docs/project_scope.md ====================
+# Project Scope
+
+## Objective
+Build a clean, responsive, static website for the Programming Club using **HTML, CSS, and JavaScript**, deployed via **GitHub Pages**, that showcases member projects, introduces members, shares beginner learning resources, answers FAQs, and lets new students apply to join.
+
+## In-Scope Sections
+1. **Homepage (`index.html`)**
+   - Club introduction, mission, meeting highlights, and quick navigation to all sections.
+2. **Project Showcase**
+   - Filterable list/grid of club projects—covering both **completed** and **in-progress** projects via status tags/filters.
+   - Displays project name, description, status (`Completed` / `In Progress`), tech stack, contributors, screenshot/preview, live demo URL (when available), and GitHub repo URL.
+3. **Member Directory**
+   - Member cards with name, avatar (`assets/`), club role, favorite programming languages, short bio, and GitHub profile link.
+   - Only publish member details/avatars with that member's permission.
+4. **Starter Resources & Wiki**
+   - Curated beginner guides, environment setup tips, language/Git tutorials, and club workflow references.
+5. **Join Us Form**
+   - Collects student name, contact info, programming experience, and interests/motivation.
+   - Sends submissions to the club lead's email via an external form service or serverless endpoint (never hardcode email credentials in frontend JS).
+6. **FAQ**
+   - Answers common questions: experience needed, what to bring to meetings, languages covered, meeting schedule, joining projects, and how to join.
+
+## Out of Scope (v1)
+- Custom backend server or database hosted in this repo.
+- User accounts, login/authentication, or admin dashboards.
+- Heavy frontend frameworks or complex build pipelines.
+==================== ./documentation/project-docs/team_assignments.md ====================
+# Team Assignments
+Everyone starts with clear, scoped tasks and reviews/support as needed. Assignments can adjust as members learn and progress.
+
+- **Deona:** Repo & GitHub setup, shared layout/navigation & CSS variables, project filtering/rendering JS, Homepage, Join Us form integration, PR reviews, and mentoring.
+- **Dorian:** Project showcase filtering/search/status tags (`Completed` / `In Progress`) and interactive UI components.
+- **Drin:** Starter Resources & Wiki structure/content, organizing data entries, basic JS helpers, and testing.
+- **Eda:** FAQ section layout/styling and member directory card styling/responsive polish.
+- **Elisa:** FAQ, semantic HTML structure, and learning CSS through small styled sections.
+- **Sinem:** Member directory markup/cards, basic UI styling, and responsive checks.
+- **Vigan:** Page layouts, responsive styling, collaborating on homepage/navigation structure, and picking up JS basics.
+- **Yusuf:** Project showcase entries (including in-progress project details/descriptions), layout support, and cross-device testing/bug reporting.
+
+## Task Completion Rules
+- Built on a dedicated branch from an up-to-date `main`.
+- Follows `codingstandards.md` and `commitconventions.md`.
+- Tested in the browser on desktop and mobile widths.
+- Submitted via a Pull Request and approved before merging.
+==================== ./documentation/project-docs/technical_specifications.md ====================
+# Technical Specifications
+
+## Tech Stack & Hosting
+- **Markup:** Semantic HTML5
+- **Styling:** CSS3 (custom properties, Flexbox/Grid, responsive breakpoints)
+- **Scripting:** Vanilla JavaScript (ES6+)
+- **Hosting:** GitHub Pages (static site hosting)
+- **Join Form Delivery:** Third-party form endpoint (Web3Forms)
+
+## Proposed Folder Structure
+- `.github/` — Issue templates and pull request template
+- `assets/` — Images, avatars, logos, and project screenshots
+- `documentation/project-docs/` — Scope, tech specs, team assignments, roadmap
+- `documentation/development-docs/` — Git workflow, commit rules, coding standards
+- `src/components/` — Reusable UI fragments/templates if modularized
+- `src/pages/` — Secondary HTML pages or section modules
+- `src/styles/` — CSS stylesheets (base, layout, components, pages)
+- `src/scripts/` — JS modules (filtering, rendering cards, form handling, nav)
+- `src/data/` — Data files (e.g., `projects.js`, `members.js`, `faq.js`)
+- `index.html` — Main entry point
+- `contributing.md` — Contribution overview
+- `README.md` — Project overview & setup
+
+## Shared Conventions
+- Agree on shared header/footer markup and CSS variables before building individual pages so styles stay consistent.
+- Keep data (projects, members, FAQs) structured cleanly so UI rendering stays simple and maintainable.
+==================== ./.editorconfig ====================
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+==================== ./.github/ISSUE_TEMPLATE/bug_report.md ====================
+---
+name: Bug report
+about: Report something broken on the website
+title: "fix: "
+labels: bug
+---
+
+## What happened?
+Describe the bug clearly.
+
+## Steps to reproduce
+1. Go to '...'
+2. Click on '...'
+3. See error/issue
+
+## Expected behavior
+What should happen instead?
+
+## Browser / Device
+- Device (desktop/mobile):
+- Browser:
+==================== ./.github/ISSUE_TEMPLATE/feature_request.md ====================
+---
+name: Feature request
+about: Suggest a new feature, section, or improvement
+title: "feat: "
+labels: enhancement
+---
+
+## Summary
+What feature or improvement are you suggesting?
+
+## Why is it useful?
+How does it help club members or visitors?
+
+## Acceptance Criteria
+- [ ] Requirement 1
+- [ ] Requirement 2
+==================== ./.github/PULL_REQUEST_TEMPLATE.md ====================
+## What does this PR change?
+Brief summary of your changes.
+
+## Related Issue
+Closes #<issue-number>
+
+## Checklist
+- [ ] I created a branch from an updated `main` branch.
+- [ ] My commits follow `commitconventions.md`.
+- [ ] I checked my changes on desktop and mobile viewports.
+- [ ] I only modified files relevant to my task.
+==================== ./.gitignore ====================
+# OS & editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs & temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build / dependency folders (if tooling is added later)
+node_modules/
+dist/
+build/
+==================== ./index.html ====================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YKC Programming Club</title>
+  <link rel="stylesheet" href="src/styles/base.css" />
+  <link rel="stylesheet" href="src/styles/layout.css" />
+  <link rel="stylesheet" href="src/styles/components.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="index.html" class="brand">&lt;YKC_ProgrammingClub&gt;</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="src/pages/projects.html">Projects</a></li>
+          <li><a href="src/pages/members.html">Members</a></li>
+          <li><a href="src/pages/resources.html">Resources</a></li>
+          <li><a href="src/pages/faq.html">FAQ</a></li>
+          <li><a href="src/pages/join.html">Join Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Build &amp; Learn Together</h1>
+        <p>Welcome to the YKC Programming Club. We collaborate on real projects, learn modern tools, 
+            and welcome beginners and experienced coders alike.</p>
+        <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="src/pages/join.html" class="btn btn-primary">Join the Club</a>
+          <a href="src/pages/projects.html" class="btn btn-secondary">Explore Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid">
+          <article class="card">
+            <h2>Collaborative Projects</h2>
+            <p>Work in teams using Git and GitHub to build websites, games, apps, tools, 
+                and so much more from scratch.</p>
+            <a href="src/pages/projects.html">View Project Showcase &rarr;</a>
+          </article>
+          <article class="card">
+            <h2>Learning Wiki</h2>
+            <p>Step-by-step setup guides, Git workflows, and tutorials to help you get started.</p>
+            <a href="src/pages/resources.html">Browse Resources &rarr;</a>
+          </article>
+          <article class="card">
+            <h2>Meet the Team</h2>
+            <p>See who is building what, their favorite languages, and links to their GitHub profiles.</p>
+            <a href="src/pages/members.html">Meet Members &rarr;</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>YKC Programming Club</span>
+      <a href="https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website" target="_blank" rel="noopener">GitHub Repository</a>
+    </div>
+  </footer>
+</body>
+</html>
+==================== ./README.md ====================
+# ProgrammingClub-Website
+Official website for our Programming Club, built with **HTML, CSS, and JavaScript** and hosted on **GitHub Pages**.
+
+## What's Included
+- **Homepage / Index:** Club overview, purpose, activities, and highlights.
+- **Project Showcase:** Filterable gallery of club projects (including active/in-progress projects alongside completed ones) with live demos, GitHub links, tags, and contributors.
+- **Member Directory:** Member profile cards with role, favorite languages, short bio, GitHub link, and avatar.
+- **Starter Resources & Wiki:** Setup guides, beginner tutorials, learning links, and club Git workflow notes.
+- **Join Us:** Application form for prospective members (name, contact info, experience, interests/motivation) wired to a form/notification endpoint.
+- **FAQ:** Answers to common questions about joining, meetings, languages, and projects.
+
+## Getting Started Locally
+   in bash shell:
+   git clone https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website.git
+   cd ProgrammingClub-Website
+==================== ./src/pages/faq.html ====================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | YKC Programming Club</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/components.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="../../index.html" class="brand">&lt;YKC_ProgrammingClub&gt;</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="members.html">Members</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="faq.html" class="active">FAQ</a></li>
+          <li><a href="join.html">Join Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <p>Everything you need to know before joining a meeting.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Elisa & Eda: add and refine club Q&As -->
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>Do I need coding experience to join?</summary>
+            <p>No. Complete beginners are welcome. We have starter guides and team tasks suited for all levels.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What should I bring to meetings?</summary>
+            <p>Answer</p>
+          </details>
+          <details class="faq-item">
+            <summary>Which programming languages do we use?</summary>
+            <p>Answer</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I join?</summary>
+            <p>Fill out the application on our Join Us page and we'll follow up with details.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>YKC Programming Club</span>
+      <a href="https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website" target="_blank" rel="noopener">GitHub Repository</a>
+    </div>
+  </footer>
+</body>
+</html>
+==================== ./src/pages/join.html ====================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Us | YKC Programming Club</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/components.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="../../index.html" class="brand">&lt;YKC_ProgrammingClub&gt;</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="members.html">Members</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="join.html" class="active">Join Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Join the Programming Club</h1>
+        <p>Tell us a bit about yourself and what you'd like to build or learn.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <form class="card form-card" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Replace WEB3FORMS_ACCESS_KEY with public Web3Forms key later -->
+          <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY" />
+          <input type="hidden" name="subject" value="New Programming Club Application" />
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="experience">Programming Experience</label>
+            <select id="experience" name="experience" required>
+              <option value="none">None yet (Complete beginner)</option>
+              <option value="beginner">Some basics (HTML/CSS/Python/etc.)</option>
+              <option value="intermediate">Built a few projects before</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="motivation">Interests &amp; Why You Want to Join</label>
+            <textarea id="motivation" name="motivation" rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit Application</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>YKC Programming Club</span>
+      <a href="https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website" target="_blank" rel="noopener">GitHub Repository</a>
+    </div>
+  </footer>
+</body>
+</html>
+==================== ./src/pages/members.html ====================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members | YKC Programming Club</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/components.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="../../index.html" class="brand">&lt;YKC_ProgrammingClub&gt;</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="members.html" class="active">Members</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="join.html">Join Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Member Directory</h1>
+        <p>Meet the contributors behind the YKC Programming Club.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Sinem & Eda: duplicate .card for each member -->
+        <div class="grid" id="members-grid">
+          <article class="card">
+            <img src="../../assets/default-avatar.png" alt="Member avatar" class="avatar" />
+            <div>
+              <h2>Member Name</h2>
+              <p>Club Role</p>
+            </div>
+            <p>Short bio about what they enjoy building or learning.</p>
+            <div class="tag-list">
+              <span class="badge">Python</span>
+              <span class="badge">JavaScript</span>
+            </div>
+            <a href="https://github.com/" target="_blank" rel="noopener">GitHub Profile</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>YKC Programming Club</span>
+      <a href="https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website" target="_blank" rel="noopener">GitHub Repository</a>
+    </div>
+  </footer>
+</body>
+</html>
+==================== ./src/pages/projects.html ====================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | YKC Programming Club</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/components.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="../../index.html" class="brand">&lt;YKC_ProgrammingClub&gt;</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="members.html">Members</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="join.html">Join Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Project Showcase</h1>
+        <p>Completed builds and active in-progress projects created by club members.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Dorian: wire up filter buttons in src/scripts/projects.js -->
+        <div class="filter-bar" id="project-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+          <button class="filter-btn" data-filter="in-progress">In Progress</button>
+        </div>
+
+        <div class="grid" id="projects-grid">
+          <article class="card">
+            <div class="tag-list">
+              <span class="badge badge-progress">In Progress</span>
+              <span class="badge">HTML</span>
+              <span class="badge">CSS</span>
+              <span class="badge">JavaScript</span>
+            </div>
+            <h2>Programming Club Website</h2>
+            <p>Our official club hub featuring project filtering, member profiles, starter guides, and a join form.</p>
+            <p><strong>Contributors:</strong> Deona, Dorian, Drin, Eda, Elisa, Sinem, Vigan, Yusuf</p>
+            <div class="tag-list">
+              <a href="https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website" target="_blank" rel="noopener">GitHub Repo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>YKC Programming Club</span>
+      <a href="https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website" target="_blank" rel="noopener">GitHub Repository</a>
+    </div>
+  </footer>
+</body>
+</html>
+==================== ./src/pages/resources.html ====================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources | YKC Programming Club</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/components.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="../../index.html" class="brand">&lt;YKC_ProgrammingClub&gt;</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="members.html">Members</a></li>
+          <li><a href="resources.html" class="active">Resources</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="join.html">Join Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Starter Resources &amp; Wiki</h1>
+        <p>Setup guides, beginner tutorials, and our club Git workflow in one place.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Drin: expand guides and links -->
+        <div class="grid">
+          <article class="card">
+            <h2>1. Dev Environment Setup</h2>
+            <p>Install VS Code, Git, and a modern browser to start writing and testing code locally.</p>
+          </article>
+          <article class="card">
+            <h2>2. Git &amp; GitHub Basics</h2>
+            <p>Learn how to clone repos, create feature branches, write clean commits, and open Pull Requests.</p>
+          </article>
+          <article class="card">
+            <h2>3. Web &amp; Python Fundamentals</h2>
+            <p>Curated beginner tracks for HTML, CSS, JavaScript, and Python.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>YKC Programming Club</span>
+      <a href="https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website" target="_blank" rel="noopener">GitHub Repository</a>
+    </div>
+  </footer>
+</body>
+</html>
+==================== ./src/styles/base.css ====================
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-alt: #273549;
+  --border: #334155;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #ffffff;
+  --accent-hover: #666666;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --radius: 10px;
+  --max-width: 1120px;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #0f172a;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  color: #0f172a;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+}
+==================== ./src/styles/components.css ====================
+/* Cards */
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card h2,
+.card h3 {
+  font-size: 1.15rem;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Badges & Tags */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background-color: var(--surface-alt);
+  color: var(--text);
+}
+
+.badge-completed {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: var(--success);
+}
+
+.badge-progress {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--warning);
+}
+
+/* Filter Bar (Project Showcase) */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  background-color: var(--surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* Member Avatar */
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+}
+
+/* Join Us Form */
+.form-card {
+  max-width: 620px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.85rem;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* FAQ Accordion */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 780px;
+}
+
+.faq-item {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+}
+
+.faq-item summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.faq-item p {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+}
+==================== ./src/styles/layout.css ====================
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.site-header {
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+}
+
+.page-header {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: var(--text-muted);
+  max-width: 65ch;
+}
+
+.section {
+  padding: 2.5rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+.site-footer {
+  background-color: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

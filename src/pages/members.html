@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members | YKC Programming Club</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/components.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="../../index.html" class="brand">&lt;YKC_ProgrammingClub&gt;</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="members.html" class="active">Members</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="join.html">Join Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Member Directory</h1>
+        <p>Meet the contributors behind the YKC Programming Club.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Sinem: build/duplicate member directory cards and check responsive behavior -->
+        <!-- Eda: polish member card styling and responsive layout -->
+        <div class="grid" id="members-grid">
+          <article class="card">
+            <img src="../../assets/default-avatar.png" alt="Member avatar" class="avatar" />
+            <div>
+              <h2>Member Name</h2>
+              <p>Club Role</p>
+            </div>
+            <p>Short bio about what they enjoy building or learning.</p>
+            <div class="tag-list">
+              <span class="badge">Python</span>
+              <span class="badge">JavaScript</span>
+            </div>
+            <a href="https://github.com/" target="_blank" rel="noopener">GitHub Profile</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>YKC Programming Club</span>
+      <a href="https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website" target="_blank" rel="noopener">GitHub Repository</a>
+    </div>
+  </footer>
+</body>
+</html>

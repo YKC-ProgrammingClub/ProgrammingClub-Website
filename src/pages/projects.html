@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | YKC Programming Club</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/components.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="../../index.html" class="brand">&lt;YKC_ProgrammingClub&gt;</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="members.html">Members</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="join.html">Join Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Project Showcase</h1>
+        <p>Completed builds and active in-progress projects created by club members.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Dorian: wire up filter/search/status controls and interactive UI in src/scripts/ -->
+        <div class="filter-bar" id="project-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+          <button class="filter-btn" data-filter="in-progress">In Progress</button>
+        </div>
+
+        <!-- Yusuf: add/update project cards (including in-progress projects) and verify layout/responsiveness -->
+        <!-- Deona & Drin: hook up dynamic rendering/data helpers when ready -->
+        <div class="grid" id="projects-grid">
+          <article class="card">
+            <div class="tag-list">
+              <span class="badge badge-progress">In Progress</span>
+              <span class="badge">HTML</span>
+              <span class="badge">CSS</span>
+              <span class="badge">JavaScript</span>
+            </div>
+            <h2>Programming Club Website</h2>
+            <p>Our official club hub featuring project filtering, member profiles, starter guides, and a join form.</p>
+            <p><strong>Contributors:</strong> Deona, Dorian, Drin, Eda, Elisa, Sinem, Vigan, Yusuf</p>
+            <div class="tag-list">
+              <a href="https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website" target="_blank" rel="noopener">GitHub Repo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>YKC Programming Club</span>
+      <a href="https://github.com/YKC-ProgrammingClub/ProgrammingClub-Website" target="_blank" rel="noopener">GitHub Repository</a>
+    </div>
+  </footer>
+</body>
+</html>
